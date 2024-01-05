@@ -1,1 +1,46 @@
 
+import java.io.*;
+
+public class J1 {
+    public static void main(String args[]) throws IOException {
+        System.out.println("統一發票對獎程式");
+
+        // Create a file named "invoice.txt" and write sample invoice numbers to it
+        createInvoiceFile();
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String[] str = new String[4];
+
+        System.out.print("請輸入特獎獎號：");
+        str[0] = br.readLine();
+
+        for (int i = 1; i < str.length; i++) {
+            System.out.print("請輸入第" + (i + 1) + "組頭獎獎號：");
+            str[i] = br.readLine();
+        }
+
+
+        compare(str); // 呼叫比對號碼的方法
+    }
+
+    static void compare(String[] numbers) throws IOException {
+        // Add your code to compare with the invoice.txt file and determine the prizes
+        // You can read the invoice numbers from the file and compare them with the input numbers
+        // Display the results accordingly
+    }
+
+    static void createInvoiceFile() throws IOException {
+        // Sample invoice numbers (replace these with actual data)
+        String[] sampleInvoices = {"39907790", "01454603", "00927870", "41237472"};
+
+        // Create a file named "invoice.txt" and write sample invoice numbers to it
+        try (PrintWriter writer = new PrintWriter(new 
+
+FileWriter("invoice.txt"))) {
+            for (String invoice : sampleInvoices) {
+                writer.println(invoice);
+            }
+        }
+    }
+}
+
