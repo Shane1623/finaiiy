@@ -1,1 +1,51 @@
 
+// Define the IPass interface
+interface IPass {
+    int s1 = 80; // Subject passing standard
+    int s2 = 85; // Scholarship minimum score
+
+    void Pass();
+}
+
+// Implement the IPass interface in the CCollege class
+class CCollege implements IPass {
+    int chineseScore;
+    int englishScore;
+    int mathScore;
+
+    CCollege(int chineseScore, int englishScore, int mathScore) {
+        this.chineseScore = chineseScore;
+        this.englishScore = englishScore;
+        this.mathScore = mathScore;
+    }
+
+    public void Pass() {
+        double averageScore = (chineseScore + 
+
+englishScore + mathScore) / 3.0;
+        System.out.println("學期成績：" + averageScore);
+
+        if (chineseScore >= s1 && englishScore >= s1 && mathScore >= s1) {
+            System.out.println("未達獎學金標準");
+        } else if (averageScore >= s2) {
+            System.out.println("恭喜您！！達獎學金標準");
+        } else {
+            System.out.println("未達獎學金標準");
+        }
+    }
+}
+
+public class J2 {
+    public static void main(String[] args) {
+        // First student's scores
+        CCollege student1 = new CCollege(82, 83, 81);
+        System.out.println("第一位學生成績");
+        student1.Pass();
+
+        // Second student's scores
+        CCollege student2 = new CCollege(81, 88, 95);
+        System.out.println("第二位學生成績");
+        student2.Pass();
+    }
+}
+
