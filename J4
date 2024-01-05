@@ -1,1 +1,36 @@
 
+import java.util.Scanner;
+
+public class J4 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            validatePassword(scanner);
+            System.out.println("密碼正確");
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    static void validatePassword(Scanner scanner) {
+        String password1, password2;
+
+        for (int i = 0; i < 3; i++) {
+            System.out.print("請輸入密碼：");
+            password1 = scanner.next();
+            System.out.print("請再次輸入密碼：");
+            password2 = scanner.next();
+
+            if (password1.equals(password2)) {
+                System.out.println("密碼正確");
+                return;
+            } else {
+                System.out.println("與第一次輸入的不同！");
+            }
+        }
+
+        throw new RuntimeException("輸入三次錯誤！程式停止！");
+    }
+}
+
