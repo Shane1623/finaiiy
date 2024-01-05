@@ -1,1 +1,32 @@
+class PrePaid extends Thread {
+    private static int sum = 500;
+
+    public void run() {
+        makeCall(150);
+        makeCall(100);
+        makeCall(80);
+        makeCall(90);
+    }
+
+    private synchronized void makeCall(int fee) {
+        if (sum > 100) {
+            try {
+                Thread.sleep(100); // Introducing a delay to simulate a synchronization issue
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            sum -= fee;
+            System.out.println("通話費" + fee + "元 , 餘額為" + sum + "元");
+        }
+    }
+
+}
+
+public class J3 {
+    public static void main(String[] args) {
+        PrePaid prepaidCard = new PrePaid();
+        prepaidCard.start();
+    }
+}
 
